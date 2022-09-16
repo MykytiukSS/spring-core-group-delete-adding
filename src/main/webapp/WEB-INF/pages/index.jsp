@@ -20,7 +20,9 @@
                     <li><button type="button" id="add_contact" class="btn btn-default navbar-btn">Add Contact</button></li>
                     <li><button type="button" id="add_group" class="btn btn-default navbar-btn">Add Group</button></li>
                     <li><button type="button" id="delete_contact" class="btn btn-default navbar-btn">Delete Contact</button></li>
-                    <li><button type="button" id="delete_group" class="btn btn-default navbar-btn">Delete Group</button></li>
+
+
+
                     <li><button type="button" id="reset" class="btn btn-default navbar-btn">Reset</button></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Groups <span class="caret"></span></a>
@@ -31,7 +33,19 @@
                             </c:forEach>
                         </ul>
                     </li>
+
                 </ul>
+                <form role="form" class="form-horizontal" action="/group/delete" method="post">
+
+                    <select class="navbar-form navbar" name="group">
+                        <option value="-1">Delete group</option>
+                        <c:forEach items="${groups}" var="group">
+                            <option value="${group.id}">${group.name}</option>
+                        </c:forEach>
+                    </select>
+                    <input type="submit" class="btn btn-default" value="Delete">
+                </form>
+
                 <form class="navbar-form navbar-left" role="search" action="/search" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" name="pattern" placeholder="Search">
